@@ -7,7 +7,7 @@ body {
 
 
 header {
-    background-color: #e07fcd;
+    background-color: #ec8bd8;
     color: white;
     padding: 1em;
 }
@@ -45,7 +45,7 @@ input, textarea, button {
 }
 
 button {
-    background-color: #418cd3;
+    background-color: #488ccd;
     color: white;
     border: none;
     cursor: pointer;
