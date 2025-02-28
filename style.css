@@ -1,3 +1,16 @@
+@keyframes moveBackground {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+body {
+    background: linear-gradient(45deg, #73547e, #8431c5, #3a1e59);
+    background-size: 400% 400%;
+    animation: moveBackground 10s ease infinite;
+}
+
+
 body {
     font-family: "proxima-nova", sans-serif;
     margin: 0;
