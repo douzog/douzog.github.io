@@ -59,7 +59,7 @@ input, textarea, button {
 
 button {
     background-color: #ffffff  !important;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     cursor: pointer;
 }
