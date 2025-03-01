@@ -32,7 +32,17 @@
     <section id="contact">
         <h2>Contact</h2>
         <p></p>
-        <p>..</p>
+        <p>douzog(@)proton.me</p>
+
+        <button id="emailButton">Contact Us</button>
+
+        <script>
+        document.getElementById("emailButton").addEventListener("click", function() {
+            let user = "douzog";
+            let domain = "proton.me";
+            window.location.href = "mailto:" + user + "@" + domain;
+        });
+        </script>
   
     </section>
 
