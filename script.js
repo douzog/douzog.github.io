@@ -30,36 +30,43 @@ document.addEventListener('DOMContentLoaded', () => {
 // Navigation Functionality
 // ================================
 
-const navbar = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+let navbar, hamburger, navMenu, navLinks;
 
-// Toggle mobile menu
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+function initNav() {
+    navbar = document.getElementById('navbar');
+    hamburger = document.getElementById('hamburger');
+    navMenu = document.getElementById('nav-menu');
+    navLinks = document.querySelectorAll('.nav-link');
+    if (!navbar || !hamburger || !navMenu) return;
 
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+    // Toggle mobile menu
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
-});
+
+    // Close mobile menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initNav);
 
 // Add scrolled class to navbar on scroll
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
+    navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     if (currentScroll > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
     lastScroll = currentScroll;
 });
 
@@ -89,21 +96,21 @@ function highlightNavigation() {
 window.addEventListener('scroll', highlightNavigation);
 
 // ================================
-// Smooth Scroll with Offset
+// Smooth Scroll (nav links) – use scrollIntoView so it works with scroll-snap
 // ================================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    const navAnchors = document.querySelectorAll('.nav-link[href^="#"]');
+    navAnchors.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.getElementById(href.slice(1));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
 });
 
@@ -333,38 +340,38 @@ window.addEventListener('scroll', debounce(() => {
 // Accessibility: Keyboard Navigation
 // ================================
 
-document.addEventListener('keydown', (e) => {
-    // ESC key closes mobile menu
-    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }
-});
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('nav-menu');
+    const ham = document.getElementById('hamburger');
+    if (!nav || !ham) return;
 
-// Focus trap for mobile menu when open
-const focusableElements = 'a[href], button, textarea, input, select';
-const firstFocusableElement = navMenu.querySelectorAll(focusableElements)[0];
-const focusableContent = navMenu.querySelectorAll(focusableElements);
-const lastFocusableElement = focusableContent[focusableContent.length - 1];
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            ham.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
 
-document.addEventListener('keydown', function(e) {
-    if (!navMenu.classList.contains('active')) return;
-    
-    let isTabPressed = e.key === 'Tab';
-    
-    if (!isTabPressed) return;
-    
-    if (e.shiftKey) {
-        if (document.activeElement === firstFocusableElement) {
-            lastFocusableElement.focus();
-            e.preventDefault();
+    const focusableElements = 'a[href], button, textarea, input, select';
+    const focusableContent = nav.querySelectorAll(focusableElements);
+    const firstFocusableElement = focusableContent[0];
+    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    document.addEventListener('keydown', function(e) {
+        if (!nav.classList.contains('active')) return;
+        if (e.key !== 'Tab') return;
+        if (e.shiftKey) {
+            if (document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus();
+                e.preventDefault();
+            }
+        } else {
+            if (document.activeElement === lastFocusableElement) {
+                firstFocusableElement.focus();
+                e.preventDefault();
+            }
         }
-    } else {
-        if (document.activeElement === lastFocusableElement) {
-            firstFocusableElement.focus();
-            e.preventDefault();
-        }
-    }
+    });
 });
 
 // ================================

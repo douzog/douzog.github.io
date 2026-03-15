@@ -48,6 +48,7 @@ body {
 section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    scroll-margin-top: 100px; /* space for fixed navbar when scrolling to section */
 }
 
 /* ================================
@@ -309,9 +310,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-logo {
     display: block;
-    height: 12px;
+    height: 3px;
     width: auto;
-    max-width: 48px;
+    max-width: 10px;
     object-fit: contain;
     vertical-align: middle;
 }
