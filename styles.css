@@ -284,8 +284,36 @@ h1, h2, h3, h4, h5, h6 {
 .hero-subtitle {
     font-size: clamp(1.25rem, 2.5vw, 1.5rem);
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
+}
+
+.hero-subtitle:last-of-type {
+    margin-bottom: 0;
+}
+
+.hero-subtitle-with-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.hero-logo-link {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.hero-logo {
+    display: block;
+    height: 12px;
+    width: auto;
+    max-width: 48px;
+    object-fit: contain;
+    vertical-align: middle;
 }
 
 .hero-description {
