@@ -1028,6 +1028,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Laser Neuron Purple image below hero subtitles */
 .hero-laserneuron-img {
     margin: 1rem 0;
+    text-align: center;
 }
 
 .laserneuron-purple {
@@ -1035,4 +1036,5 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: auto;
     display: block;
+    margin: 0 auto;
 }
