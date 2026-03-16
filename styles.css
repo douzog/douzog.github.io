@@ -1024,3 +1024,15 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+
+/* Laser Neuron Purple image below hero subtitles */
+.hero-laserneuron-img {
+    margin: 1rem 0;
+}
+
+.laserneuron-purple {
+    max-width: 220px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
