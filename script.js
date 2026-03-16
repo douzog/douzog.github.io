@@ -96,7 +96,7 @@ function highlightNavigation() {
 window.addEventListener('scroll', highlightNavigation);
 
 // ================================
-// Smooth Scroll (nav links) – use scrollIntoView so it works with scroll-snap
+// Smooth Scroll (nav links) to correct section
 // ================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.getElementById(href.slice(1));
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
             }
         });
     });

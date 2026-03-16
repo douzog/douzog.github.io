@@ -30,7 +30,6 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
-    scroll-snap-type: y mandatory;
     overflow-y: scroll;
 }
 
@@ -40,14 +39,11 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     background-color: var(--bg-primary);
-    height: 100vh;
+    min-height: 100vh;
     overflow-y: auto;
-    scroll-snap-type: y mandatory;
 }
 
 section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     scroll-margin-top: 100px; /* space for fixed navbar when scrolling to section */
 }
 
@@ -310,9 +306,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-logo {
     display: block;
-    height: 3px;
+    height: 200px;
     width: auto;
-    max-width: 10px;
     object-fit: contain;
     vertical-align: middle;
 }
