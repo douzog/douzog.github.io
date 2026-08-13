@@ -163,9 +163,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     list-style: none;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-link {
+    white-space: nowrap;
 }
 
 .nav-link {
@@ -561,6 +567,12 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-light);
 }
 
+.education-mentor {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
 /* ================================
    Skills Section
    ================================ */
@@ -816,11 +828,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ================================
+   Beyond the Work Section
+   ================================ */
+.beyond {
+    padding: 6rem 0;
+    background: var(--bg-secondary);
+}
+
+.beyond-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all var(--transition-slow);
+}
+
+.beyond-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.beyond-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* ================================
    Contact Section
    ================================ */
 .contact {
     padding: 6rem 0;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
 }
 
 .contact-content {
@@ -1025,16 +1065,302 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/* Laser Neuron Purple image below hero subtitles */
-.hero-laserneuron-img {
-    margin: 1rem 0;
-    text-align: center;
+/* ================================
+   Hero Logo (Quantum Café)
+   ================================ */
+.hero-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
 }
 
-.laserneuron-purple {
-    max-width: 378px;
-    width: 100%;
+.hero-logos .hero-logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-base);
+}
+
+.hero-logos .hero-logo-link:hover {
+    transform: translateY(-4px);
+}
+
+.quantumcafe-logo {
+    width: 400px;
+    max-width: 100%;
     height: auto;
     display: block;
+}
+
+/* ================================
+   About: links & subheading
+   ================================ */
+.about-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+    transition: all var(--transition-fast);
+}
+
+.about-text a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+/* ================================
+   Subsection headings
+   ================================ */
+.subsection-title {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline + .subsection-title {
+    margin-top: 3rem;
+}
+
+/* ================================
+   Timeline: role, place, org, bullets
+   ================================ */
+.timeline-place {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    font-weight: 500;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.timeline-subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-role {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.timeline-org {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+}
+
+.timeline-header h3 a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.timeline-header h3 a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+.timeline-location a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.timeline-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-bullets li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.timeline-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+}
+
+.timeline-bullets li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+    white-space: nowrap;
+    transition: all var(--transition-fast);
+}
+
+.timeline-bullets li a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+.timeline-bullets li strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* ================================
+   Talks & Presentations Section
+   ================================ */
+.talks {
+    padding: 6rem 0;
+    background: var(--bg-primary);
+}
+
+.talks .timeline-description a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.talk-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.talk-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.talk-link svg {
+    flex-shrink: 0;
+}
+
+/* ================================
+   Awards, Honors & Selected Media
+   ================================ */
+.awards {
+    padding: 6rem 0;
+    background: var(--bg-secondary);
+}
+
+.awards-centered {
+    max-width: 900px;
     margin: 0 auto;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all var(--transition-slow);
+}
+
+.awards-centered.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.awards-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.awards-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.awards-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.awards-list li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+    transition: all var(--transition-fast);
+}
+
+.awards-list li a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+.awards-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+@media (max-width: 900px) {
+    .education-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-logos {
+        gap: 1rem;
+    }
+
+    .quantumcafe-logo {
+        width: 260px;
+    }
+
+    .timeline-place,
+    .timeline-subheader {
+        white-space: normal;
+    }
+
+    .subsection-title {
+        font-size: 1.15rem;
+    }
+
+    .awards-centered {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
 }
