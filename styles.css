@@ -495,8 +495,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .education-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* auto-fit so the fifth (non-degree) card doesn't orphan on its own row */
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 1.5rem;
+}
+
+.education-card h3 a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.education-card h3 a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+.education-institution a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
 }
 
 .education-card {
@@ -764,11 +781,42 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
 }
 
+.performances-list {
+    /* 12 gigs is a lot of page; cap it and scroll inside instead */
+    max-height: 440px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+}
+
+.performances-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.performances-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.performances-list::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+.performances-list::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
 .performances-list li {
     margin-bottom: 0.75rem;
     transition: all var(--transition-base);
 }
 
+.performances-list li:last-child {
+    margin-bottom: 0;
+}
+
+.performance-item,
 .performance-link {
     display: flex;
     flex-direction: column;
@@ -779,6 +827,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all var(--transition-base);
 }
 
+.performance-item:hover,
 .performance-link:hover {
     background: white;
     box-shadow: var(--shadow-md);
@@ -796,6 +845,18 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     color: var(--text-primary);
     font-weight: 500;
+}
+
+.performance-city {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 0.15rem;
+}
+
+.performance-note {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
 }
 
 /* ================================
@@ -1291,6 +1352,13 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid var(--accent-color);
 }
 
+.talk-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: center;
+}
+
 .talk-link {
     display: inline-flex;
     align-items: center;
@@ -1314,6 +1382,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .talk-link svg {
     flex-shrink: 0;
+}
+
+/* the secondary action sits quieter than the primary gradient button */
+.talk-link--secondary {
+    background: white;
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+}
+
+.talk-link--secondary:hover {
+    border-color: var(--primary-color);
 }
 
 /* ================================
@@ -1422,4 +1501,51 @@ h1, h2, h3, h4, h5, h6 {
         flex-basis: 240px;
     }
 
+}
+
+.block-source {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.block-source a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.block-source a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+.performance-venue a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.performance-venue a:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* press photo sitting inside an awards / media entry */
+.media-figure {
+    margin: 0.9rem 0 0.25rem;
+    max-width: 340px;
+}
+
+.media-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.media-figure figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-light);
 }

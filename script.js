@@ -194,7 +194,7 @@ const updateFooterYear = () => {
     const footerText = document.querySelector('.footer p');
     if (footerText) {
         const currentYear = new Date().getFullYear();
-        footerText.innerHTML = `&copy; ${currentYear} Isabella I. Douzoglou. All rights reserved.`;
+        footerText.innerHTML = `&copy; ${currentYear} Isabella I. Douzoglou Muñoz. All rights reserved.`;
     }
 };
 
