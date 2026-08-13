@@ -639,12 +639,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ================================
-   Publications & Awards Section
+   Publications & Awards
    ================================ */
-.publications {
-    padding: 6rem 0;
-    background: var(--bg-secondary);
-}
 
 .publications-grid {
     display: grid;
@@ -708,12 +704,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ================================
-   Recordings & Performances Section
+   Recordings & Performances
    ================================ */
-.recordings {
-    padding: 6rem 0;
-    background: var(--bg-primary);
-}
 
 .recordings-grid {
     display: grid;
@@ -1223,14 +1215,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ================================
-   Talks & Presentations Section
+   Stuff Section (talks, publications, awards, recordings)
    ================================ */
-.talks {
+.stuff {
     padding: 6rem 0;
     background: var(--bg-primary);
 }
 
-.talks .timeline-description a {
+.stuff-block {
+    scroll-margin-top: 100px;
+}
+
+.stuff-block + .stuff-block {
+    margin-top: 4rem;
+}
+
+/* every block shares the 900px column the subsection rules sit on */
+.stuff .publications-grid,
+.stuff .recordings-centered {
+    max-width: 900px;
+}
+
+.stuff .timeline-description a {
     color: var(--primary-color);
     text-decoration: none;
     border-bottom: 1px solid var(--accent-color);
@@ -1264,10 +1270,6 @@ h1, h2, h3, h4, h5, h6 {
 /* ================================
    Awards, Honors & Selected Media
    ================================ */
-.awards {
-    padding: 6rem 0;
-    background: var(--bg-secondary);
-}
 
 .awards-centered {
     max-width: 900px;
